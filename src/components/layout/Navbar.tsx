@@ -16,7 +16,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4 sm:pt-6 transition-all duration-300">
-      <nav 
+      <nav
         className={`w-full max-w-5xl rounded-full transition-all duration-300 px-6 sm:px-8 py-3.5 flex items-center justify-between border ${
           scrolled
             ? 'bg-slate-950/85 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
@@ -114,3 +114,4 @@ export const Navbar: React.FC = () => {
     </header>
   );
 };
+

@@ -11,9 +11,9 @@ import {
   Eye
 } from 'lucide-react';
 import { Navbar } from '../../components/layout/Navbar';
+import { authService } from '../../services/authService';
 import { RobotCanvas } from '../../components/proctoring/RobotCanvas';
 import { GhostFibers } from '../../components/common/GhostFibers';
-import TiltedCard, { TiltedCardLayer } from '../../components/common/TiltedCard';
 
 export const LandingPage: React.FC = () => {
 
@@ -86,7 +86,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Subtitle */}
             <p className="mt-6 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
-              No intrusive 24/7 video streaming to corporate servers. ProctorVision runs lightweight
+              No intrusive 24/7 video streaming to corporate servers. ProctorVision runs lightweigh
               <span className="text-cyan-400 font-medium"> MediaPipe Face Mesh</span> and
               <span className="text-teal-400 font-medium"> COCO-SSD Phone Detection</span> right on the student’s laptop.
               Teachers review <span className="text-white font-medium">short snapshot timelines</span> with full false-alarm tuning.
@@ -96,6 +96,7 @@ export const LandingPage: React.FC = () => {
             <div className="mt-8 flex flex-wrap items-center gap-4 w-full sm:w-auto">
               <Link
                 to="/student"
+                onClick={() => authService.setCurrentRole('student')}
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 text-slate-950 font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <Play className="w-4 h-4 fill-slate-950" />
@@ -105,6 +106,7 @@ export const LandingPage: React.FC = () => {
 
               <Link
                 to="/teacher"
+                onClick={() => authService.setCurrentRole('teacher')}
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-200 hover:text-white border border-white/10 hover:border-cyan-500/40 font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
               >
                 <Sliders className="w-4 h-4 text-cyan-400" />

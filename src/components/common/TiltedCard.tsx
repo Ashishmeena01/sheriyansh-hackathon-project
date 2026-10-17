@@ -210,7 +210,9 @@ export const TiltedCard = ({
     tooltip: showTooltip && Boolean(captionText)
   };
   const settingsRef = useRef(settings);
-  settingsRef.current = settings;
+  useEffect(() => {
+    settingsRef.current = settings;
+  });
 
   useEffect(() => {
     wakeRef.current?.();
