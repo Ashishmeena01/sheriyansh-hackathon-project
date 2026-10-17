@@ -54,7 +54,7 @@ export const RobotCanvas: React.FC = () => {
     scene.add(rightRim);
 
     // Soft underglow
-    const underGlow = new THREE.PointLight(0x06b6d4, 1.5, 5);
+    const underGlow = new THREE.PointLight(0xa855f7, 1.6, 5);
     underGlow.position.set(0, -1.8, 1.2);
     scene.add(underGlow);
 
@@ -302,10 +302,10 @@ export const RobotCanvas: React.FC = () => {
       {loading && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 z-10 bg-slate-950/60 backdrop-blur-sm rounded-2xl">
           <div className="relative w-8 h-8">
-            <div className="w-8 h-8 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin" />
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400 absolute inset-0 m-auto animate-pulse" />
+            <div className="w-8 h-8 rounded-full border-2 border-purple-500/20 border-t-purple-400 animate-spin" />
+            <Sparkles className="w-3.5 h-3.5 text-purple-400 absolute inset-0 m-auto animate-pulse" />
           </div>
-          <div className="text-[11px] font-mono text-cyan-300 font-medium">
+          <div className="text-[11px] font-mono text-purple-300 font-medium">
             Loading AI Bot... {loadProgress > 0 ? `${loadProgress}%` : ''}
           </div>
         </div>

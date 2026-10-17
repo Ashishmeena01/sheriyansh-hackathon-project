@@ -8,11 +8,22 @@
   body {
     background-color: #080c14;
     color: #f1f5f9;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.01em;
+    font-family: 'Outfit', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.012em;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Space Grotesk', 'Outfit', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
 }
 
@@ -37,6 +48,10 @@
 
 .glow-emerald {
   box-shadow: 0 0 35px -8px rgba(16, 185, 129, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 35px -8px rgba(168, 85, 247, 0.35);
 }
 
 @keyframes pulse-subtle {

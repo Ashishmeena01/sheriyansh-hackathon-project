@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import MagneticButton from '../common/MagneticButton';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,45 +24,51 @@ export const Navbar: React.FC = () => {
             : 'bg-slate-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.2)]'
         }`}
       >
-        {/* Clean Typography Brand Name (No icon logo) */}
-        <Link to="/" className="flex items-center group">
-          <span className="text-xl font-bold tracking-tight text-white group-hover:text-slate-200 transition-colors">
-            Proctor<span className="text-cyan-400">Vision</span>
-          </span>
+        {/* Neon Cyber Brand Logo */}
+        <Link to="/" aria-label="ProctorVision Home" className="flex items-center group">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden  transition-all duration-300 bg-slate-950 flex items-center justify-center shrink-0">
+            <img
+              src="/logo.jpg"
+              alt="ProctorVision Neon Logo"
+              className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-300"
+            />
+          </div>
         </Link>
 
-        {/* Modern Capsule Navigation Bar with 3 Selected Buttons */}
-        <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-slate-950/60 border border-white/[0.08] backdrop-blur-md shadow-inner">
-          <a
-            href="#features"
-            className="px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.08] transition-all duration-200"
-          >
-            Features
-          </a>
-          <a
-            href="#how-it-works"
-            className="px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.08] transition-all duration-200"
-          >
-            How It Works
-          </a>
-          <a
-            href="#demo"
-            className="px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.08] transition-all duration-200 flex items-center gap-1.5"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Live Demo</span>
-          </a>
+        {/* Modern Capsule Navigation Bar with Liquid Fill Effect */}
+        <div className="hidden md:flex items-center gap-1.5 p-1 rounded-full bg-slate-950/70 border border-white/[0.08] backdrop-blur-md shadow-inner">
+          {[
+            { label: 'Features', href: '#features' },
+            { label: 'How It Works', href: '#how-it-works' },
+            { label: 'Live Demo', href: '#demo' },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="relative group/nav overflow-hidden px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium text-slate-300 cursor-pointer select-none transition-colors duration-200"
+            >
+              {/* Smooth Dark Liquid Fill Layer */}
+              <span className="absolute inset-0 bg-gradient-to-b from-slate-800/95 via-slate-800/90 to-slate-900/95 border border-white/10 rounded-full translate-y-full group-hover/nav:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_4px_12px_rgba(0,0,0,0.5)]" />
+
+              {/* Text */}
+              <span className="relative z-10 transition-colors duration-300 text-slate-300 group-hover/nav:text-white">
+                {item.label}
+              </span>
+            </a>
+          ))}
         </div>
 
-        {/* Only Login Button */}
+        {/* Only Login Button with Magnetic Effect */}
         <div className="hidden sm:flex items-center">
-          <Link
-            to="/login"
-            className="group relative inline-flex items-center gap-2 text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-teal-300 hover:from-cyan-300 hover:to-teal-200 px-5 py-2 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.35)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-all transform hover:-translate-y-0.5"
-          >
-            <span>Login</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+          <MagneticButton strength={0.3}>
+            <Link
+              to="/login"
+              className="group relative inline-flex items-center gap-2 text-sm font-semibold text-white bg-gradient-to-r from-purple-500 via-violet-400 to-purple-400 hover:from-purple-400 hover:to-violet-300 px-5 py-2 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.35)] hover:shadow-[0_0_25px_rgba(168,85,247,0.55)] transition-all cursor-pointer"
+            >
+              <span>Login</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </MagneticButton>
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,23 +87,23 @@ export const Navbar: React.FC = () => {
           <a
             href="#features"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 hover:text-cyan-400 py-1 transition-colors"
+            className="text-sm font-medium text-slate-200 hover:text-purple-400 py-1 transition-colors"
           >
             Features
           </a>
           <a
             href="#how-it-works"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 hover:text-cyan-400 py-1 transition-colors"
+            className="text-sm font-medium text-slate-200 hover:text-purple-400 py-1 transition-colors"
           >
             How It Works
           </a>
           <a
             href="#demo"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-medium text-slate-200 hover:text-cyan-400 py-1 transition-colors flex items-center gap-2"
+            className="text-sm font-medium text-slate-200 hover:text-purple-400 py-1 transition-colors flex items-center gap-2"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
             Live Demo
           </a>
 
@@ -105,7 +112,7 @@ export const Navbar: React.FC = () => {
           <Link
             to="/login"
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full text-center py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-teal-300 text-slate-950 font-semibold text-sm transition-all"
+            className="w-full text-center py-2.5 rounded-full bg-gradient-to-r from-purple-500 via-violet-400 to-purple-400 text-white font-semibold text-sm transition-all shadow-[0_0_20px_rgba(168,85,247,0.35)]"
           >
             Login
           </Link>
